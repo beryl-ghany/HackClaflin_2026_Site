@@ -34,13 +34,18 @@ const SCHEDULE = [
 ];
 
 const FAQ = [
-  { q: "Who can attend?", a: "Any college student, no matter your major, year, or background." },
-  { q: "Do I need experience?", a: "Not at all. HackClaflin is designed for beginners. Workshops and mentors are there to guide you." },
-  { q: "Do I need a team?", a: "No. Come solo and we'll help you find a team at the event." },
-  { q: "Is there a cost?", a: "Zero. Registration, food, workshops, and swag are all free." },
-  { q: "What should I bring?", a: "Your laptop, charger, student ID, and curiosity." },
-  { q: "What is MLH?", a: "Major League Hacking is the official student hackathon league. HackClaflin is an MLH member event." },
-  { q: "Where exactly is the venue?", a: "Claflin University Student Center, Ballroom B, Orangeburg, SC." },
+  { q: "Who can attend?", a: "HackClaflin is open to college students and recent graduates. Beginners are especially encouraged to join." },
+  { q: "Do I need coding experience?", a: "No. This is a beginner-friendly event. You can learn during the hackathon." },
+  { q: "Do I need a team?", a: "No. You can come with a team or form one at the event." },
+  { q: "What should I bring?", a: "Bring your laptop, charger, and anything else you need to build comfortably." },
+  { q: "How long is the event?", a: "HackClaflin 2026 is an 8-hour hack day, from 9:00 AM to 5:00 PM." },
+  { q: "What will we be doing?", a: "You’ll spend the day building a project, attending workshops, and getting help from mentors." },
+  { q: "What can I build?", a: "You can build anything, a website, app, tool, or idea you care about. It doesn’t have to be perfect." },
+  { q: "Is it free?", a: "Yes. HackClaflin is free to attend." },
+  { q: "Where is the event located?", a: "Claflin University Student Center, Ballroom B, Orangeburg, South Carolina." },
+  { q: "Will food be provided?", a: "Yes, food and snacks will be available during the event." },
+  { q: "What if I’ve never been to a hackathon before?", a: "That’s completely fine. HackClaflin is designed for first-time participants." },
+  { q: "Still have questions?", a: "If you have any more questions, feel free to reach out to us at team@hackclaflin.org." },
 ];
 
 const TEAM = [
@@ -206,13 +211,13 @@ function NavBar({ scrollTo }) {
       padding: "8px clamp(16px,4vw,48px)",
     }}>
       <img src={IMGS.logo} alt="Hack Claflin" style={{ height: 62, width: "auto" }} />
-      <div style={{ display: "flex", gap: 4, alignItems: "center", flexWrap: "wrap" }}>
+      <div className="nav-scroll" style={{ display: "flex", gap: 4, alignItems: "center", flexWrap: "nowrap", whiteSpace: "nowrap", overflowX: "auto", maxWidth: "70vw" }}>
         {["about","tracks","schedule","sponsors","team","faqs"].map(s => (
           <button key={s} onClick={() => scrollTo(s)} style={{
             background: "transparent", border: "none", color: "rgba(255,255,255,0.75)",
             fontFamily: "'Cabinet Grotesk', 'Syne', sans-serif",
             fontWeight: 600, fontSize: 13, letterSpacing: 0.5,
-            padding: "6px 12px", cursor: "pointer", borderRadius: 6, transition: "color 0.2s",
+            padding: "6px 12px", cursor: "pointer", borderRadius: 6, transition: "color 0.2s", flexShrink: 0,
           }}
             onMouseEnter={e => e.target.style.color = "#fff"}
             onMouseLeave={e => e.target.style.color = "rgba(255,255,255,0.75)"}
@@ -222,7 +227,7 @@ function NavBar({ scrollTo }) {
           style={{
             marginLeft: 8, background: "#8B1A2B", color: "#fff", fontWeight: 800,
             fontSize: 13, padding: "9px 20px", borderRadius: 8, textDecoration: "none",
-            fontFamily: "'Cabinet Grotesk', 'Syne', sans-serif", letterSpacing: 0.3,
+            fontFamily: "'Cabinet Grotesk', 'Syne', sans-serif", letterSpacing: 0.3, flexShrink: 0,
             transition: "background 0.2s",
           }}>Register Now</a>
       </div>
@@ -329,12 +334,17 @@ export default function HackClaflin() {
         .avatar { width: 48px; height: 48px; border-radius: 50%; background: rgba(139,26,43,0.25); border: 1.5px solid rgba(139,26,43,0.5); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #dc6070; flex-shrink: 0; font-family: 'DM Mono', monospace; }
 
         .phase-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; font-family: 'DM Mono', monospace; }
+        .nav-scroll {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .nav-scroll::-webkit-scrollbar { display: none; }
       `}</style>
 
       <NavBar scrollTo={scrollTo} />
 
       {/* ====== HERO ====== */}
-      <section style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", overflow: "hidden", paddingTop: 80 }}>
+      <section style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", overflow: "hidden", paddingTop: 110 }}>
 
         {/* Maroon maze background */}
         <MazePattern opacity={0.12} color="#8B1A2B" />
@@ -647,12 +657,15 @@ export default function HackClaflin() {
           <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: "rgba(255,255,255,0.3)", letterSpacing: 1 }}>HackClaflin 2026 · April 18 · Claflin University · Orangeburg, SC</div>
         </div>
         <div style={{ display: "flex", gap: 24 }}>
-          {["team@hackclaflin.org", "sponsors@hackclaflin.org"].map(e => (
+          {["team@hackclaflin.org"].map(e => (
             <a key={e} href={`mailto:${e}`} style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", textDecoration: "none", fontFamily: "'DM Mono', monospace", transition: "color 0.2s" }}
               onMouseEnter={ev => ev.target.style.color = "#8B1A2B"}
               onMouseLeave={ev => ev.target.style.color = "rgba(255,255,255,0.4)"}
             >{e}</a>
           ))}
+        </div>
+        <div style={{ width: "100%", textAlign: "center", marginTop: 8, fontSize: 12, color: "rgba(255,255,255,0.35)", fontFamily: "'DM Mono', monospace" }}>
+          © 2026 HackClaflin • Built with ❤️ for Panthers by panthers
         </div>
       </footer>
     </div>
