@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import LandingPage from './LandingPage.jsx'
+import LandingPage from '../../HackClaflin2.jsx'
 import ApplyForm from './ApplyForm.jsx'
 import VolunteerForm from './VolunteerForm.jsx'
 
