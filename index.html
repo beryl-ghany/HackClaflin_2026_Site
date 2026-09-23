@@ -178,14 +178,25 @@
   }
   .scroll-cue:hover { translate: -50% 4px; }
 
-  /* chocolate drip — crop to the melt only so empty cream doesn't read as a block */
+  /* candy stripe between hero swirl and chocolate drip */
+  .stripe {
+    height: 26px;
+    background: repeating-linear-gradient(-45deg, var(--cream) 0 18px, var(--raspberry) 18px 36px);
+    background-size: 51px 51px;
+    animation: slide 12s linear infinite;
+    border-top: 3px solid var(--gold-deep);
+    border-bottom: 3px solid var(--gold-deep);
+  }
+  @keyframes slide { to { background-position: 51px 0; } }
+
+  /* chocolate drip — enough height for drip tips to read clearly above the cards */
   .drip {
     position: relative;
     z-index: 3;
     background: var(--cream);
-    height: clamp(110px, 20vw, 220px);
+    height: clamp(130px, 24vw, 260px);
     overflow: hidden;
-    margin-top: -2px;
+    margin-top: 0;
     margin-bottom: 0;
     pointer-events: none;
     line-height: 0;
@@ -197,8 +208,8 @@
     object-fit: cover;
     object-position: center 0%;
     /* soft cloudy fade into the cream below */
-    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,.55) 82%, transparent 100%);
-            mask-image: linear-gradient(to bottom, #000 0%, #000 62%, rgba(0,0,0,.55) 82%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 58%, rgba(0,0,0,.55) 80%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 0%, #000 58%, rgba(0,0,0,.55) 80%, transparent 100%);
   }
 
   /* ================= FACTS ================= */
@@ -207,7 +218,7 @@
     z-index: 2;
     background: var(--cream);
     color: var(--ink);
-    padding: 12px 20px 70px;
+    padding: 36px 20px 70px;
     margin-top: 0;
   }
   .facts-grid {
@@ -416,6 +427,8 @@
 
   <a class="scroll-cue" href="#facts">Peek inside ↓</a>
 </header>
+
+<div class="stripe" aria-hidden="true"></div>
 
 <div class="drip" aria-hidden="true">
   <video id="dripVideo" muted playsinline preload="none" poster="media/drip-first.jpg">
