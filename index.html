@@ -178,15 +178,15 @@
   }
   .scroll-cue:hover { translate: -50% 4px; }
 
-  /* chocolate drip — tall enough to show the full drip animation */
+  /* chocolate drip hangs over the fact cards with a soft cloudy fade */
   .drip {
     position: relative;
-    z-index: 3;
-    height: clamp(200px, 38vw, 420px);
+    z-index: 4;
+    height: clamp(140px, 26vw, 280px);
     overflow: hidden;
     margin-top: -2px;
     margin-bottom: 0;
-    background: var(--cream);
+    background: transparent;
     pointer-events: none;
     line-height: 0;
   }
@@ -196,11 +196,34 @@
     display: block;
     object-fit: cover;
     object-position: center top;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 42%,
+      rgba(0,0,0,.85) 58%,
+      rgba(0,0,0,.35) 78%,
+      transparent 100%
+    );
+            mask-image: linear-gradient(
+      to bottom,
+      #000 0%,
+      #000 42%,
+      rgba(0,0,0,.85) 58%,
+      rgba(0,0,0,.35) 78%,
+      transparent 100%
+    );
   }
 
   /* ================= FACTS ================= */
-  /* Extra top space so fact cards sit below the drips */
-  .facts { background: var(--cream); color: var(--ink); padding: 28px 20px 70px; }
+  /* Pull cards up under the drip so chocolate overlays the top of the row */
+  .facts {
+    position: relative;
+    z-index: 2;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 0 20px 70px;
+    margin-top: clamp(-110px, -18vw, -72px);
+  }
   .facts-grid {
     max-width: 1080px; margin: 0 auto;
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
