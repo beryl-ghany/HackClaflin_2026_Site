@@ -1,16 +1,26 @@
-# HackClaflin 2026 Website
+# HackClaflin 2027
 
-A clean, modern hackathon website built with Vite, React, Tailwind CSS, and Framer Motion.
+Coming-soon site for HackClaflin 2027 at Claflin University (Orangeburg, SC).
 
-## Quick Start
+## Local
+
 ```bash
 npm i
-npm run dev    # Start dev server on http://localhost:5173
-npm run build  # Build for production
-npm run preview # Preview production build
+npm run dev
 ```
 
-## Deploy
-Deploy to Vercel, Netlify, or any static hosting service. The site uses Tally.so forms for registration.
+Open http://localhost:5173
 
-— Built with ❤️ by Panthers.
+## Build
+
+```bash
+npm run build
+npm run preview
+```
+
+Publish `dist/`.
+
+## Deploy
+
+- **Vercel / Netlify:** connect the repo; build `npm run build`, output `dist`.
+- Media lives in `public/media/` and ships with the build.

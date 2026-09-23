@@ -1,29 +1,694 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HackClaflin 2026 | Claflin University's Premier Hack Day</title>
-    <meta name="description" content="Join HackClaflin 2026 - an 8-hour hack day focused on creativity, community, and building. April 18, 2026." />
-    <meta name="keywords" content="hackathon, Claflin University, HBCU, coding, innovation, technology, South Carolina" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://hackclaflin.org/" />
-    <meta property="og:title" content="HackClaflin 2026 | Claflin University's Premier Hack Day" />
-    <meta property="og:description" content="Join HackClaflin 2026 - an 8-hour hack day focused on creativity, community, and building. April 18, 2026." />
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://hackclaflin.org/" />
-    <meta property="twitter:title" content="HackClaflin 2026 | Claflin University's Premier Hack Day" />
-    <meta property="twitter:description" content="Join HackClaflin 2026 - an 8-hour hack day focused on creativity, community, and building. April 18, 2026." />
-    <script async src="https://tally.so/widgets/embed.js"></script>
-  </head>
-  <body class="bg-gray-50">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HackClaflin 2027 is coming!</title>
+<meta name="description" content="HackClaflin 2027 is a student hackathon planned for February 2027 at Claflin University in Orangeburg, South Carolina. Explore the event and partnership opportunities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson-deep: #3E0515;
+    --crimson: #7A0F2E;
+    --raspberry: #C21E56;
+    --pink: #F2729B;
+    --gold: #ECC46E;
+    --gold-deep: #C9973F;
+    --cream: #FBF1E1;
+    --ink: #2A0710;
+    --teal: #1E8C93;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --cream: #FBF1E1; } }
+  :root[data-theme="dark"] { --cream: #FBF1E1; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
+  *, *::before, *::after { box-sizing: inherit; }
+  body {
+    margin: 0;
+    background: var(--crimson-deep);
+    color: var(--cream);
+    font-family: "Fredoka", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.55;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+  img, svg { max-width: 100%; }
+
+  /* ================= HERO ================= */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 90px 20px 150px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero-video {
+    position: absolute; inset: 0; z-index: -3;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+  }
+  .hero-tint {
+    position: absolute; inset: 0; z-index: -2;
+    background: radial-gradient(ellipse at 50% 45%, rgba(62,5,21,.3) 0%, rgba(62,5,21,.28) 40%, rgba(62,5,21,.55) 100%);
+  }
+  .hero-inner { max-width: 900px; position: relative; z-index: 2; }
+  .kicker {
+    display: inline-block;
+    font-weight: 600; font-size: clamp(14px, 2vw, 17px); letter-spacing: .08em;
+    color: var(--cream);
+    background: rgba(62,5,21,.45);
+    border: 1.5px solid rgba(236,196,110,.7);
+    padding: 8px 18px; border-radius: 999px;
+    backdrop-filter: blur(6px);
+    opacity: 0; animation: rise .6s .1s ease-out forwards;
+  }
+  h1 {
+    font-family: "Shrikhand", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(56px, 13vw, 168px);
+    line-height: .92;
+    margin: 22px 0 8px;
+    color: #fff;
+    text-shadow: 0 4px 0 var(--crimson), 0 10px 30px rgba(62,5,21,.55);
+  }
+  h1 .line { display: block; overflow: hidden; padding: 0 .08em .06em; }
+  h1 .line span { display: inline-block; transform: translateY(110%); animation: pop .7s .2s cubic-bezier(.16,1,.3,1) forwards; }
+  h1 .line:nth-child(2) span { animation-delay: .18s; color: var(--gold); text-shadow: 0 4px 0 #8A5A12, 0 10px 30px rgba(62,5,21,.55); }
+  .is-coming {
+    font-family: "Shrikhand", Georgia, serif;
+    font-size: clamp(26px, 5vw, 52px);
+    color: #fff;
+    margin: 6px 0 0;
+    opacity: 0;
+    animation: rise .6s .7s ease-out forwards;
+    text-shadow: 0 3px 0 var(--raspberry), 0 8px 24px rgba(62,5,21,.5);
+  }
+  .sub {
+    font-size: clamp(17px, 2.4vw, 22px); font-weight: 500;
+    max-width: 34ch; margin: 18px auto 0;
+    opacity: 0; animation: rise .6s .9s ease-out forwards;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+  @keyframes pop { to { transform: translateY(0); } }
+  /* A paper ticket emerges once from its slot. */
+  .ticket-slot { width: min(390px, 90vw); margin: 25px auto 0; position: relative; padding-top: 9px; }
+  .ticket-slot::before { content: ""; position: absolute; left: 6%; right: 6%; top: 0; height: 9px; border-radius: 50%; background: #27020e; box-shadow: 0 2px 0 rgba(255,255,255,.2); z-index: 2; }
+  .ticket {
+    position: relative; margin: 0 auto; padding: 13px 20px 12px;
+    color: var(--crimson-deep); background: #f5d88f;
+    border: 2px solid #f9e8b1; outline: 2px solid #9e6c1e; outline-offset: -7px;
+    clip-path: polygon(0 0,100% 0,100% 40%,96% 50%,100% 60%,100% 100%,0 100%,0 60%,4% 50%,0 40%);
+    box-shadow: 0 7px 20px rgba(42,7,16,.4);
+    opacity: 0; transform: translateY(-34px);
+    animation: dispense .9s 1.15s cubic-bezier(.16,1,.3,1) forwards;
+  }
+  .ticket::after { content: ""; display: block; border-bottom: 1px dashed #9e6c1e; margin: 5px auto 0; width: 65%; }
+  .ticket strong { display: block; font-family: "Shrikhand", Georgia, serif; font-size: 19px; font-weight: 400; line-height: 1.2; }
+  .ticket span { display: block; text-transform: uppercase; font-size: 11px; font-weight: 700; letter-spacing: .18em; }
+  /* Canva ticket art replaces the CSS ticket */
+  .ticket-slot { width: min(420px, 86vw); padding-top: 0; }
+  .ticket-slot::before { display: none; }
+  .ticket {
+    padding: 0; background: none; border: 0; outline: 0; clip-path: none; box-shadow: none;
+  }
+  .ticket::after { display: none; }
+  .ticket img { display: block; width: 100%; height: auto; }
+  @keyframes dispense { to { opacity: 1; transform: translateY(0); } }
+
+  .ctas {
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+    margin-top: 27px;
+    opacity: 0; animation: rise .6s 1.35s ease-out forwards;
+  }
+  .btn {
+    font-family: inherit; font-weight: 700; font-size: 18px;
+    text-decoration: none;
+    padding: 16px 30px; border-radius: 999px;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-gold { background: var(--gold); color: var(--crimson-deep); box-shadow: 0 6px 0 #9E6C1E; }
+  .btn-ghost { background: rgba(62,5,21,.4); color: var(--cream); border: 2px solid var(--cream); box-shadow: 0 6px 0 rgba(62,5,21,.6); backdrop-filter: blur(6px); }
+  .btn:hover { transform: translateY(-3px); }
+  .btn:active { transform: translateY(3px); }
+  .btn-gold:active { box-shadow: 0 2px 0 #9E6C1E; }
+  .btn:focus-visible, a:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+
+  /* lollipops */
+  .pop {
+    position: absolute; z-index: 1; pointer-events: none;
+    transform-origin: 50% 36%;
+    will-change: transform;
+  }
+  .pop svg { display: block; width: 100%; height: auto; }
+  .pop.p1 { width: clamp(90px, 13vw, 170px); left: 4%; top: 16%; animation: sway 7s ease-in-out infinite; }
+  .pop.p2 { width: clamp(70px, 10vw, 130px); right: 6%; top: 12%; animation: sway 8s -3s ease-in-out infinite reverse; }
+  .pop.p3 { width: clamp(80px, 12vw, 160px); right: 3%; bottom: 13%; animation: sway 9s -2s ease-in-out infinite; }
+  .pop.p4 { width: clamp(60px, 9vw, 110px); left: 7%; bottom: 16%; animation: sway 8s -4s ease-in-out infinite reverse; }
+  .pop .head { transform-origin: 60px 60px; animation: lolly-spin 12s linear infinite; }
+  .pop.p2 .head, .pop.p4 .head { animation-direction: reverse; animation-duration: 15s; }
+  @keyframes lolly-spin { to { transform: rotate(360deg); } }
+  @keyframes sway { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+  @media (max-width: 700px) {
+    .pop.p1 { top: 7%; left: -4%; } .pop.p2 { top: 5%; right: -3%; }
+    .pop.p3 { bottom: 5%; right: -4%; } .pop.p4 { bottom: 6%; left: -3%; }
+  }
+
+  .scroll-cue {
+    position: absolute; bottom: 26px; left: 50%; translate: -50% 0;
+    font-size: 14px; font-weight: 600; letter-spacing: .05em; color: var(--cream);
+    text-decoration: none; opacity: .85; z-index: 2;
+    transition: translate .2s ease;
+  }
+  .scroll-cue:hover { translate: -50% 4px; }
+
+  /* candy stripe between the header and the chocolate drip */
+  .stripe {
+    height: 26px;
+    background: repeating-linear-gradient(-45deg, var(--cream) 0 18px, var(--raspberry) 18px 36px);
+    background-size: 51px 51px;
+    animation: slide 12s linear infinite;
+    border-top: 3px solid var(--gold-deep); border-bottom: 3px solid var(--gold-deep);
+  }
+  @keyframes slide { to { background-position: 51px 0; } }
+
+  /* chocolate drip divider */
+  .drip {
+    position: relative; background: var(--cream);
+    aspect-ratio: 16 / 6.5; max-height: 520px; overflow: hidden;
+    margin-bottom: -1px;
+  }
+  .drip video {
+    width: 100%; height: 100%; display: block;
+    object-fit: cover; object-position: center top;
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
+  }
+  @media (max-width: 700px) { .drip { aspect-ratio: 16 / 8; } }
+
+  /* ================= FACTS ================= */
+  .facts { background: var(--cream); color: var(--ink); padding: 70px 20px; }
+  .facts-grid {
+    max-width: 1080px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  }
+  .fact {
+    background: #fff;
+    border: 3px solid var(--crimson);
+    border-radius: 22px;
+    padding: 26px 18px 22px;
+    text-align: center;
+    box-shadow: 0 7px 0 var(--crimson);
+  }
+  .fact:nth-child(2) { border-color: var(--teal); box-shadow: 0 7px 0 var(--teal); }
+  .fact:nth-child(3) { border-color: var(--gold-deep); box-shadow: 0 7px 0 var(--gold-deep); }
+  .fact:nth-child(4) { border-color: var(--raspberry); box-shadow: 0 7px 0 var(--raspberry); }
+  .fact b {
+    display: block; font-family: "Shrikhand", Georgia, serif; font-weight: 400;
+    font-size: clamp(38px, 5vw, 56px); line-height: 1; color: var(--crimson);
+  }
+  .fact:nth-child(2) b { color: var(--teal); }
+  .fact:nth-child(3) b { color: #A8761F; }
+  .fact:nth-child(4) b { color: var(--raspberry); }
+  .fact span { display: block; margin-top: 10px; font-weight: 600; font-size: 17px; }
+  @media (max-width: 820px) { .facts-grid { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ================= ABOUT ================= */
+  .about {
+    background: var(--cream); color: var(--ink);
+    padding: 20px 20px 90px;
+  }
+  .about-inner {
+    max-width: 1080px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; align-items: center;
+  }
+  .about h2, .sponsor h2 {
+    font-family: "Shrikhand", Georgia, serif; font-weight: 400;
+    font-size: clamp(38px, 6vw, 64px); line-height: 1.02; margin: 0 0 18px;
+    color: var(--crimson);
+  }
+  .about p { font-size: 19px; margin: 0 0 16px; max-width: 58ch; }
+  .tracks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .tracks span {
+    font-weight: 600; font-size: 15px;
+    padding: 8px 16px; border-radius: 999px;
+    background: var(--crimson); color: var(--cream);
+  }
+  .tracks span:nth-child(3n+2) { background: var(--teal); }
+  .tracks span:nth-child(3n) { background: var(--gold); color: var(--ink); }
+  .factory-art { position: relative; }
+  .factory-art svg { width: 100%; height: auto; display: block; }
+  .smoke { animation: smoke 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom center; }
+  .smoke.s2 { animation-delay: -2.5s; }
+  @keyframes smoke { 0% { opacity: 0; transform: translateY(10px) scale(.6); } 40% { opacity: .9; } 100% { opacity: 0; transform: translateY(-40px) scale(1.3); } }
+  .window { animation: flicker 4s ease-in-out infinite; }
+  .window:nth-of-type(2n) { animation-delay: -1.3s; }
+  .window:nth-of-type(3n) { animation-delay: -2.6s; }
+  @keyframes flicker { 0%,100% { opacity: 1; } 50% { opacity: .65; } }
+  @media (max-width: 820px) { .about-inner { grid-template-columns: 1fr; gap: 30px; } .factory-art { max-width: 420px; margin: 0 auto; } }
+
+  /* ================= SPONSOR ================= */
+  .sponsor {
+    position: relative; overflow: hidden;
+    background: var(--crimson);
+    padding: 90px 20px;
+    text-align: center;
+    isolation: isolate;
+  }
+  .sponsor::before {
+    content: ""; position: absolute; inset: -40%; z-index: -1;
+    background: radial-gradient(circle at 50% 50%, rgba(242,114,155,.45), rgba(122,15,46,0) 55%);
+  }
+  .sponsor h2 { color: #fff; }
+  .sponsor p { font-size: 19px; max-width: 52ch; margin: 0 auto 30px; }
+  .sponsor .email { display: block; margin-top: 18px; font-weight: 600; color: var(--gold); text-decoration: none; }
+  .sponsor .email:hover { text-decoration: underline; }
+
+  /* ================= GUMBALL FAQ ================= */
+  .faq { background: #F7E6D3; color: var(--ink); padding: 82px 20px 100px; }
+  .faq-inner { max-width: 1110px; margin: 0 auto; }
+  .faq h2 { font-family: "Shrikhand", Georgia, serif; font-size: clamp(39px, 5vw, 60px); font-weight: 400; line-height: 1.12; color: var(--crimson); margin: 0 0 8px; text-align: center; }
+  .faq-intro { text-align: center; max-width: 60ch; margin: 0 auto 44px; font-size: 18px; }
+  .faq-grid { display: grid; grid-template-columns: minmax(310px, 440px) minmax(300px, 1fr); gap: clamp(28px, 5vw, 65px); align-items: start; }
+  .machine-column { position: sticky; top: 18px; text-align: center; }
+  .machine { width: 320px; height: 492px; max-width: 100%; position: relative; margin: 0 auto; isolation: isolate; }
+  .machine-top-knob { position: absolute; top: 3px; left: 145px; width: 30px; height: 18px; border-radius: 50% 50% 20% 20%; background: var(--gold); border: 3px solid #9e6c1e; z-index: 4; }
+  .machine-cap { position: absolute; top: 17px; left: 98px; width: 124px; height: 18px; border-radius: 60% 60% 20% 20%; background: var(--crimson); border: 3px solid var(--gold-deep); z-index: 4; }
+  .machine-globe { position: absolute; top: 26px; left: 16px; width: 288px; height: 265px; border: 8px solid #e6d6c5; border-radius: 49% 49% 46% 46%; background: #fffaf3; box-shadow: inset -13px -14px 0 rgba(122,15,46,.08), 0 6px 0 #a47c53; overflow: hidden; z-index: 3; }
+  .machine-globe::after { content: ""; position: absolute; width: 90px; height: 145px; left: 24px; top: 20px; border-left: 9px solid rgba(255,255,255,.8); border-radius: 60%; transform: rotate(18deg); pointer-events: none; z-index: 2; }
+  .gumballs { position: absolute; inset: 0; transform-origin: center bottom; }
+  .gumball { position: absolute; width: 29px; height: 29px; border-radius: 50%; background: var(--ball); border: 1px solid rgba(42,7,16,.12); box-shadow: inset -4px -5px 0 rgba(42,7,16,.13); }
+  .gumball::after { content: ""; position: absolute; left: 6px; top: 5px; width: 8px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.85); transform: rotate(-28deg); }
+  .machine-neck { position: absolute; top: 278px; left: 75px; width: 170px; height: 29px; border-radius: 5px; background: var(--gold); border: 4px solid #9e6c1e; z-index: 2; }
+  .machine-body { position: absolute; top: 296px; left: 37px; width: 246px; height: 171px; background: var(--crimson); border: 6px solid var(--gold-deep); clip-path: polygon(13% 0,87% 0,100% 100%,0 100%); box-shadow: inset 0 -13px 0 #580b25; z-index: 1; }
+  .machine-body::after { content: ""; position: absolute; left: 6%; right: 6%; bottom: 13px; border-top: 3px solid var(--gold); }
+  .coin-plate { position: absolute; top: 316px; left: 111px; width: 98px; height: 70px; background: var(--gold); border: 4px solid #a8761f; border-radius: 18px; z-index: 4; }
+  .coin-slot { position: absolute; top: 8px; left: 29px; width: 32px; height: 6px; border-radius: 5px; background: #492016; box-shadow: 0 2px 0 rgba(255,255,255,.5); }
+  .crank { position: absolute; top: 342px; left: 124px; width: 72px; height: 72px; border: 4px solid #9e6c1e; border-radius: 50%; background: #FBF1E1; cursor: pointer; z-index: 6; box-shadow: 0 4px 0 #5b1130; transform-origin: center; }
+  .crank::before { content: ""; position: absolute; left: 8px; right: 8px; top: 29px; height: 7px; border-radius: 5px; background: #3E0515; }
+  .crank::after { content: ""; position: absolute; left: 3px; top: 24px; width: 12px; height: 16px; border-radius: 50%; background: var(--pink); box-shadow: 45px 0 0 var(--pink); }
+  .crank:hover { filter: brightness(1.07); }
+  .crank:focus-visible, .question-button:focus-visible { outline: 4px solid #1E8C93; outline-offset: 4px; }
+  .dispenser { position: absolute; top: 406px; left: 125px; width: 70px; height: 43px; border-radius: 12px 12px 5px 5px; border: 4px solid var(--gold-deep); background: #290511; z-index: 4; perspective: 160px; }
+  .flap { position: absolute; inset: 0; border-radius: 7px 7px 2px 2px; background: #4d0a22; transform-origin: top center; box-shadow: inset 0 4px 0 rgba(255,255,255,.1); }
+  .tray { position: absolute; top: 454px; left: 105px; width: 110px; height: 17px; border-radius: 4px 4px 35px 35px; background: var(--gold); border: 3px solid #9e6c1e; z-index: 3; }
+  .machine-base { position: absolute; top: 465px; left: 28px; width: 264px; height: 24px; border-radius: 5px 5px 13px 13px; background: #3E0515; border-bottom: 6px solid #22020d; z-index: 2; }
+  .dispensed-ball { position: absolute; top: 413px; left: 145px; width: 30px; height: 30px; border-radius: 50%; background: var(--answer-color); box-shadow: inset -4px -5px 0 rgba(42,7,16,.2); opacity: 0; z-index: 5; }
+  .dispensed-ball::after { content: ""; position: absolute; left: 7px; top: 5px; width: 8px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.85); transform: rotate(-25deg); }
+  .candy-confetti { position: absolute; top: 458px; left: 159px; z-index: 7; pointer-events: none; }
+  .candy-confetti i { position: absolute; width: 6px; height: 10px; border-radius: 2px; background: var(--piece-color); opacity: 0; }
+  .machine-caption { margin: 0 0 18px; color: var(--crimson); font-weight: 600; }
+  .answer-slot { max-width: 430px; min-height: 90px; margin: 0 auto; text-align: left; }
+  .answer-placeholder { padding: 22px; border: 2px dashed #a8765f; border-radius: 16px; text-align: center; color: #704537; }
+  .answer-card { border: 3px solid var(--answer-color); border-radius: 17px; overflow: hidden; background: white; box-shadow: 6px 7px 0 var(--answer-color); }
+  .answer-card[hidden], .answer-placeholder[hidden] { display: none; }
+  .answer-heading { padding: 14px 18px; background: var(--answer-color); color: var(--answer-text); font-size: 19px; font-weight: 700; line-height: 1.3; }
+  .answer-copy { padding: 16px 18px 19px; margin: 0; font-size: 16px; }
+  .answer-copy a { font-weight: 700; color: var(--crimson); }
+  .question-list { display: grid; gap: 11px; align-content: start; }
+  .question-button { width: 100%; min-height: 66px; display: flex; gap: 14px; align-items: center; text-align: left; padding: 13px 17px; border: 2px solid transparent; border-radius: 18px; background: #fff; color: var(--ink); font: 600 17px/1.3 "Fredoka", sans-serif; cursor: pointer; box-shadow: 0 4px 0 rgba(122,15,46,.11); transition: transform .18s, border-color .18s, background-color .18s; }
+  .question-button:hover { transform: translateX(5px); border-color: var(--crimson); }
+  .question-button[aria-pressed="true"] { border-color: var(--crimson); background: #fff8ec; }
+  .question-dot { flex: 0 0 22px; height: 22px; border-radius: 50%; background: var(--question-color); box-shadow: inset -3px -4px 0 rgba(42,7,16,.17); }
+  .question-dot::after { content: ""; display: block; width: 6px; height: 4px; border-radius: 50%; margin: 4px 0 0 5px; background: rgba(255,255,255,.8); }
+  .machine.is-turning .crank { animation: crank-turn .85s ease-in-out both; }
+  .machine.is-turning .gumballs { animation: gumball-jiggle .75s ease-in-out both; }
+  .machine.is-dispensing .flap { animation: flap-open .75s ease-in-out both; }
+  .machine.is-dispensing .dispensed-ball { animation: ball-drop .65s cubic-bezier(.2,.7,.25,1) forwards; }
+  .machine.is-popping .dispensed-ball { opacity: 1; transform: translateY(41px); animation: ball-pop .3s ease-out forwards; }
+  .machine.is-popping .candy-confetti i { animation: candy-spray .42s ease-out forwards; }
+  .answer-card.is-arriving { animation: answer-appear .45s cubic-bezier(.2,1.5,.35,1) both; }
+  .answer-card.is-leaving { animation: answer-leave .2s ease-in both; }
+  @keyframes crank-turn { to { transform: rotate(360deg); } }
+  @keyframes gumball-jiggle { 0%,100% { transform: translateX(0); } 22%,70% { transform: translateX(-5px); } 45%,88% { transform: translateX(5px); } }
+  @keyframes flap-open { 0%,100% { transform: rotateX(0); } 25%,78% { transform: rotateX(-75deg); } }
+  @keyframes ball-drop { 0%,8% { opacity: 0; transform: translateY(0); } 15% { opacity: 1; } 60% { transform: translateY(44px) scaleY(.78) scaleX(1.15); } 78% { transform: translateY(31px) scale(.96,1.05); } 100% { opacity: 1; transform: translateY(41px); } }
+  @keyframes ball-pop { to { opacity: 0; transform: translateY(41px) scale(2.3); } }
+  @keyframes candy-spray { 0% { opacity: 1; transform: translate(0,0) rotate(0); } 100% { opacity: 0; transform: translate(var(--dx),var(--dy)) rotate(var(--spin)); } }
+  @keyframes answer-appear { from { opacity: 0; transform: translateY(12px) scale(.92); } to { opacity: 1; transform: none; } }
+  @keyframes answer-leave { to { opacity: 0; transform: translateY(-12px); } }
+  @media (max-width: 780px) { .faq-grid { grid-template-columns: 1fr; gap: 35px; } .machine-column { position: static; } .question-list { max-width: 600px; width: 100%; margin: 0 auto; } }
+  @media (max-width: 360px) { .machine { transform: scale(.88); transform-origin: top center; margin-bottom: -55px; } }
+
+  /* ================= FOOTER ================= */
+  .candy-stage {
+    position: relative; background: #51081A;
+    aspect-ratio: 16 / 6.4; max-height: 620px; overflow: hidden;
+  }
+  .candy-stage video {
+    width: 100%; height: 100%; display: block;
+    object-fit: cover; object-position: center bottom;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 30%);
+  }
+  @media (max-width: 700px) { .candy-stage { aspect-ratio: 4 / 3; } }
+  footer {
+    background: var(--crimson-deep);
+    padding: 36px 20px 40px;
+    text-align: center;
+    font-size: 15px;
+  }
+  footer .brand { font-family: "Shrikhand", Georgia, serif; font-size: 26px; color: var(--gold); }
+  footer nav { display: flex; gap: 22px; justify-content: center; flex-wrap: wrap; margin: 14px 0; }
+  footer nav a { text-decoration: none; font-weight: 600; opacity: .9; }
+  footer nav a:hover { opacity: 1; text-decoration: underline; }
+  footer small { opacity: .7; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .kicker, .is-coming, .sub, .ctas, .ticket { opacity: 1 !important; transform: none !important; }
+    h1 .line span { transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <video class="hero-video" id="heroVideo" muted loop playsinline preload="auto" poster="media/hero-poster.jpg" aria-hidden="true">
+    <source src="media/hero-loop.mp4" type="video/mp4">
+  </video>
+  <div class="hero-tint" aria-hidden="true"></div>
+
+  <!-- lollipops -->
+  <div class="pop p1" aria-hidden="true"><svg viewBox="0 0 120 190"><rect x="56" y="100" width="8" height="90" rx="4" fill="#FBF1E1"/><g class="head"><circle cx="60" cy="60" r="56" fill="#FFD23F"/><path d="M60 60 m0-50 a50 50 0 0 1 0 100 a40 40 0 0 1 0-80 a30 30 0 0 1 0 60 a20 20 0 0 1 0-40 a10 10 0 0 1 0 20" fill="none" stroke="#E4205F" stroke-width="10" stroke-linecap="round"/><path d="M60 60 m0-44 a44 44 0 0 1 0 88 a34 34 0 0 1 0-68 a24 24 0 0 1 0 48" fill="none" stroke="#1E8C93" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="60" r="56" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3"/></g></svg></div>
+  <div class="pop p2" aria-hidden="true"><svg viewBox="0 0 120 190"><rect x="56" y="100" width="8" height="90" rx="4" fill="#FBF1E1"/><g class="head"><circle cx="60" cy="60" r="56" fill="#fff"/><path d="M60 60 m0-50 a50 50 0 0 1 0 100 a40 40 0 0 1 0-80 a30 30 0 0 1 0 60 a20 20 0 0 1 0-40 a10 10 0 0 1 0 20" fill="none" stroke="#E4205F" stroke-width="12" stroke-linecap="round"/><circle cx="60" cy="60" r="56" fill="none" stroke="#F2729B" stroke-width="3"/></g></svg></div>
+  <div class="pop p3" aria-hidden="true"><svg viewBox="0 0 120 190"><rect x="56" y="100" width="8" height="90" rx="4" fill="#FBF1E1"/><g class="head"><circle cx="60" cy="60" r="56" fill="#2BB3A3"/><path d="M60 60 m0-50 a50 50 0 0 1 0 100 a40 40 0 0 1 0-80 a30 30 0 0 1 0 60 a20 20 0 0 1 0-40 a10 10 0 0 1 0 20" fill="none" stroke="#FFD23F" stroke-width="10" stroke-linecap="round"/><path d="M60 60 m0-44 a44 44 0 0 1 0 88 a34 34 0 0 1 0-68 a24 24 0 0 1 0 48" fill="none" stroke="#E4205F" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="60" r="56" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3"/></g></svg></div>
+  <div class="pop p4" aria-hidden="true"><svg viewBox="0 0 120 190"><rect x="56" y="100" width="8" height="90" rx="4" fill="#FBF1E1"/><g class="head"><circle cx="60" cy="60" r="56" fill="#ECC46E"/><path d="M60 60 m0-50 a50 50 0 0 1 0 100 a40 40 0 0 1 0-80 a30 30 0 0 1 0 60 a20 20 0 0 1 0-40 a10 10 0 0 1 0 20" fill="none" stroke="#7A0F2E" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="60" r="56" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3"/></g></svg></div>
+
+  <div class="hero-inner">
+    <span class="kicker">Claflin University &nbsp;|&nbsp; Orangeburg, SC</span>
+    <h1><span class="line"><span>HackClaflin</span></span><span class="line"><span>2027</span></span></h1>
+    <p class="is-coming">is coming!</p>
+    <p class="sub">Big ideas are brewing. Join us in February 2027.</p>
+
+    <div class="ticket-slot" aria-label="An invitation to HackClaflin 2027">
+      <div class="ticket"><img src="media/invitation-ticket.webp" width="1200" alt="Your Invitation. Imagine it. Build it." /></div>
+    </div>
+
+    <div class="ctas">
+      <a class="btn btn-gold" href="#about">Explore HackClaflin</a>
+      <a class="btn btn-ghost" href="#sponsor">Become a sponsor</a>
+    </div>
+  </div>
+
+  <a class="scroll-cue" href="#facts">Peek inside ↓</a>
+</header>
+
+<div class="stripe" aria-hidden="true"></div>
+
+<div class="drip" aria-hidden="true">
+  <video id="dripVideo" muted playsinline preload="none" poster="media/drip-first.jpg">
+    <source src="media/chocolate-drip.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- ================= FACTS ================= -->
+<section class="facts" id="facts" aria-label="Quick facts">
+  <div class="facts-grid">
+    <div class="fact reveal"><b>Feb</b><span>2027, dates to come</span></div>
+    <div class="fact reveal"><b>150</b><span>student participation goal</span></div>
+    <div class="fact reveal"><b>SC</b><span>Orangeburg, South Carolina</span></div>
+    <div class="fact reveal"><b>All</b><span>experience levels welcome</span></div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="reveal">
+      <h2>Something sweet is brewing.</h2>
+      <p>HackClaflin 2027 is a student hackathon planned at Claflin University. We're bringing together students from Claflin and other schools to form teams, explore real problems, build creative projects, and share their work.</p>
+      <p>New to hackathons? You're welcome here. We're planning workshops and opportunities to learn from mentors. The candy factory theme brings a little imagination to the experience.</p>
+      <div class="tracks" aria-label="Possible project topics">
+        <span>Energy + sustainability</span><span>Cybersecurity</span><span>AI</span><span>Community impact</span><span>Infrastructure</span><span>Beginner friendly</span>
+      </div>
+    </div>
+
+    <div class="factory-art reveal" aria-hidden="true">
+      <svg viewBox="0 0 400 360">
+        <circle class="smoke" cx="118" cy="40" r="16" fill="#F7C9D8"/>
+        <circle class="smoke s2" cx="128" cy="30" r="12" fill="#FBF1E1"/>
+        <circle class="smoke" cx="292" cy="58" r="14" fill="#FBF1E1"/>
+        <circle class="smoke s2" cx="282" cy="48" r="11" fill="#F7C9D8"/>
+        <rect x="100" y="60" width="36" height="110" rx="4" fill="#5A0A22"/>
+        <rect x="100" y="60" width="36" height="12" fill="#ECC46E"/>
+        <rect x="270" y="80" width="32" height="90" rx="4" fill="#5A0A22"/>
+        <rect x="270" y="80" width="32" height="12" fill="#ECC46E"/>
+        <path d="M40 170 L120 120 L200 170 L280 120 L360 170 L360 330 L40 330 Z" fill="#7A0F2E"/>
+        <path d="M40 170 L120 120 L200 170 L280 120 L360 170" fill="none" stroke="#ECC46E" stroke-width="6" stroke-linejoin="round"/>
+        <rect class="window" x="70" y="195" width="40" height="44" rx="20" fill="#FFD9A0"/>
+        <rect class="window" x="150" y="195" width="40" height="44" rx="20" fill="#FFD9A0"/>
+        <rect class="window" x="210" y="195" width="40" height="44" rx="20" fill="#FFD9A0"/>
+        <rect class="window" x="290" y="195" width="40" height="44" rx="20" fill="#FFD9A0"/>
+        <path d="M170 330 L170 280 A30 30 0 0 1 230 280 L230 330 Z" fill="#3E0515"/>
+        <circle cx="218" cy="305" r="4" fill="#ECC46E"/>
+        <path d="M0 330 Q100 312 200 330 T400 330 L400 360 L0 360 Z" fill="#6B3A1F"/>
+        <path d="M0 340 Q100 324 200 340 T400 340" fill="none" stroke="#8C5230" stroke-width="4"/>
+        <rect x="12" y="280" width="6" height="52" rx="3" fill="#FBF1E1"/>
+        <circle cx="15" cy="272" r="22" fill="#F2729B"/><circle cx="15" cy="272" r="12" fill="none" stroke="#fff" stroke-width="5"/>
+        <rect x="378" y="286" width="6" height="46" rx="3" fill="#FBF1E1"/>
+        <circle cx="381" cy="278" r="18" fill="#2BB3A3"/><circle cx="381" cy="278" r="9" fill="none" stroke="#FFD23F" stroke-width="4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SPONSOR ================= -->
+<section class="sponsor" id="sponsor">
+  <div class="reveal">
+    <h2>Want in on the factory?</h2>
+    <p>We're inviting organizations to meet student talent, mentor teams, lead workshops, judge projects, or support the event. Let's discuss how your team could help make HackClaflin accessible to students.</p>
+    <a class="btn btn-gold" href="mailto:sponsors@hackclaflin.org?subject=HackClaflin%202027%20Partnership">Partner with us</a>
+    <a class="email" href="mailto:sponsors@hackclaflin.org">sponsors@hackclaflin.org</a>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <h2>Got questions? Turn the crank.</h2>
+    <p class="faq-intro">Pick a question and the machine will serve up the answer. Feeling lucky? Spin the crank for a random one.</p>
+    <div class="faq-grid">
+      <div class="machine-column">
+        <div class="machine" id="faq-machine" aria-label="Illustrated gumball machine">
+          <div class="machine-top-knob" aria-hidden="true"></div>
+          <div class="machine-cap" aria-hidden="true"></div>
+          <div class="machine-globe" aria-hidden="true"><div class="gumballs" id="gumballs"></div></div>
+          <div class="machine-neck" aria-hidden="true"></div>
+          <div class="machine-body" aria-hidden="true"></div>
+          <div class="coin-plate" aria-hidden="true"><div class="coin-slot"></div></div>
+          <button class="crank" id="faq-crank" type="button" aria-label="Turn the crank for a random question"></button>
+          <div class="dispenser" aria-hidden="true"><div class="flap"></div></div>
+          <div class="tray" aria-hidden="true"></div>
+          <div class="dispensed-ball" aria-hidden="true"></div>
+          <div class="candy-confetti" id="candy-confetti" aria-hidden="true"></div>
+          <div class="machine-base" aria-hidden="true"></div>
+        </div>
+        <p class="machine-caption">Tap the crank for a surprise.</p>
+        <div class="answer-slot" id="answer-slot" role="status" aria-live="polite" aria-atomic="true">
+          <div class="answer-placeholder" id="answer-placeholder">Your answer will roll out here.</div>
+          <div class="answer-card" id="answer-card" hidden>
+            <div class="answer-heading" id="answer-heading"></div>
+            <p class="answer-copy" id="answer-copy"></p>
+          </div>
+        </div>
+      </div>
+      <div class="question-list" id="question-list" aria-label="Frequently asked questions"></div>
+    </div>
+  </div>
+</section>
+
+<div class="candy-stage" aria-hidden="true">
+  <video id="candyVideo" muted loop playsinline preload="none" poster="media/candy-poster.jpg">
+    <source src="media/candy-loop.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="brand">HackClaflin 2027</div>
+  <nav aria-label="Links">
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="#sponsor">Partner with us</a>
+    <a href="mailto:sponsors@hackclaflin.org">Contact</a>
+  </nav>
+  <small>Claflin University, Orangeburg, South Carolina</small>
+</footer>
+
+<script>
+  const faqItems = [
+    { q: 'What is HackClaflin 2027?', a: 'HackClaflin is a student hackathon planned for February 2027 at Claflin University in Orangeburg, South Carolina. Students will form teams, develop projects, learn from mentors, and share what they build.', color: '#E4205F', text: '#fff' },
+    { q: 'When will it take place?', a: 'We’re planning for February 2027. We’ll announce the exact dates and schedule once they’re confirmed.', color: '#2BB3A3', text: '#2A0710' },
+    { q: 'Who is HackClaflin for?', a: 'We’re planning to welcome college students from Claflin and other schools. Final participation details will be posted when registration opens.', color: '#ECC46E', text: '#2A0710' },
+    { q: 'Do I need hackathon experience?', a: 'No. First-time participants are welcome. We’re planning workshops and opportunities to get help as you build.', color: '#F2729B', text: '#2A0710' },
+    { q: 'Do I need to know how to code?', a: 'No. Building a project can involve design, research, writing, pitching, and many other skills. You can contribute even if you’re new to coding.', color: '#FFD23F', text: '#2A0710' },
+    { q: 'Do I need a team before I register?', a: 'No. You’ll be able to meet other participants and explore team ideas at the event. We’ll share the team size limit when registration opens.', color: '#7A0F2E', text: '#fff' },
+    { q: 'What kinds of projects can we build?', a: 'Projects could include apps, websites, AI tools, games, or other creative solutions. We’ll announce the official tracks and any project rules before the event.', color: '#1E8C93', text: '#fff' },
+    { q: 'Is there a cost to attend?', a: 'We’re working to make HackClaflin free for participants. We’ll confirm what is included when registration opens.', color: '#E4205F', text: '#fff' },
+    { q: 'How can I hear about registration?', a: 'Registration is not open yet. Watch this site for the announcement.', color: '#2BB3A3', text: '#2A0710' },
+    { q: 'How can my company get involved?', a: 'We’d love to speak with organizations interested in sponsoring HackClaflin or contributing mentors, speakers, judges, or workshops. Email ', link: 'sponsors@hackclaflin.org', color: '#ECC46E', text: '#2A0710' }
+  ];
+  const machine = document.getElementById('faq-machine');
+  const globe = document.getElementById('gumballs');
+  const crank = document.getElementById('faq-crank');
+  const questionList = document.getElementById('question-list');
+  const card = document.getElementById('answer-card');
+  const placeholder = document.getElementById('answer-placeholder');
+  const heading = document.getElementById('answer-heading');
+  const copy = document.getElementById('answer-copy');
+  const confetti = document.getElementById('candy-confetti');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ballColors = ['#E4205F','#2BB3A3','#ECC46E','#F2729B','#FFD23F','#7A0F2E','#1E8C93','#FBF1E1'];
+  let busy = false;
+  let lastIndex = -1;
+  const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+  // Rows follow the curve of the glass globe; each ball has its own shine.
+  [7,8,8,7,6,4].forEach((count, row) => {
+    const step = 30;
+    const left = (272 - (count - 1) * step - 29) / 2;
+    for (let col = 0; col < count; col++) {
+      const ball = document.createElement('i');
+      ball.className = 'gumball';
+      ball.style.left = `${left + col * step + (row % 2 ? 3 : 0)}px`;
+      ball.style.top = `${222 - row * 30}px`;
+      ball.style.setProperty('--ball', ballColors[(col * 5 + row * 3) % ballColors.length]);
+      globe.appendChild(ball);
+    }
+  });
+
+  faqItems.forEach((item, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'question-button';
+    button.style.setProperty('--question-color', item.color);
+    button.setAttribute('aria-pressed', 'false');
+    const dot = document.createElement('span');
+    dot.className = 'question-dot';
+    dot.setAttribute('aria-hidden', 'true');
+    const label = document.createElement('span');
+    label.textContent = item.q;
+    button.append(dot, label);
+    button.addEventListener('click', () => dispense(index, true));
+    questionList.appendChild(button);
+  });
+
+  function showAnswer(index) {
+    const item = faqItems[index];
+    card.style.setProperty('--answer-color', item.color);
+    card.style.setProperty('--answer-text', item.text);
+    heading.textContent = item.q;
+    copy.textContent = item.a;
+    if (item.link) {
+      const link = document.createElement('a');
+      link.href = `mailto:${item.link}`;
+      link.textContent = item.link;
+      copy.append(link, document.createTextNode(' to start a conversation.'));
+    }
+    placeholder.hidden = true;
+    card.hidden = false;
+    [...questionList.children].forEach((button, i) => button.setAttribute('aria-pressed', String(i === index)));
+    lastIndex = index;
+  }
+
+  function makeConfetti(color) {
+    confetti.replaceChildren();
+    for (let i = 0; i < 9; i++) {
+      const piece = document.createElement('i');
+      const angle = i * (2 * Math.PI / 9);
+      piece.style.setProperty('--piece-color', i % 2 ? color : '#ECC46E');
+      piece.style.setProperty('--dx', `${Math.round(Math.cos(angle) * 48)}px`);
+      piece.style.setProperty('--dy', `${Math.round(Math.sin(angle) * 37 - 12)}px`);
+      piece.style.setProperty('--spin', `${i % 2 ? 130 : -130}deg`);
+      confetti.appendChild(piece);
+    }
+  }
+
+  async function dispense(index, fromList = false) {
+    if (busy) return;
+    busy = true;
+    const item = faqItems[index];
+    machine.style.setProperty('--answer-color', item.color);
+    if (fromList && window.matchMedia('(max-width: 780px)').matches && !reducedMotion.matches) {
+      const bounds = machine.getBoundingClientRect();
+      if (bounds.top < 0 || bounds.bottom > innerHeight) {
+        machine.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        await pause(550);
+      }
+    }
+    if (reducedMotion.matches) {
+      showAnswer(index);
+      busy = false;
+      return;
+    }
+    if (!card.hidden) {
+      card.classList.remove('is-arriving');
+      card.classList.add('is-leaving');
+      await pause(200);
+      card.hidden = true;
+      card.classList.remove('is-leaving');
+    }
+    machine.classList.add('is-turning');
+    await pause(850);
+    machine.classList.remove('is-turning');
+    machine.classList.add('is-dispensing');
+    await pause(750);
+    machine.classList.remove('is-dispensing');
+    makeConfetti(item.color);
+    machine.classList.add('is-popping');
+    await pause(430);
+    machine.classList.remove('is-popping');
+    confetti.replaceChildren();
+    showAnswer(index);
+    card.classList.add('is-arriving');
+    await pause(450);
+    card.classList.remove('is-arriving');
+    if (window.matchMedia('(max-width: 780px)').matches) {
+      const bounds = card.getBoundingClientRect();
+      if (bounds.bottom > innerHeight || bounds.top < 0) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    busy = false;
+  }
+
+  // Background videos: hero plays on load, the drip plays once and the candy loops when scrolled into view.
+  const heroVideo = document.getElementById('heroVideo');
+  const dripVideo = document.getElementById('dripVideo');
+  const candyVideo = document.getElementById('candyVideo');
+  if (!reducedMotion.matches) {
+    heroVideo.play().catch(() => {});
+    new IntersectionObserver(([entry]) => {
+      entry.isIntersecting ? heroVideo.play().catch(() => {}) : heroVideo.pause();
+    }).observe(heroVideo);
+    const videoWatcher = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          if (video === dripVideo) {
+            if (!video.dataset.played) { video.dataset.played = '1'; video.play().catch(() => {}); }
+          } else video.play().catch(() => {});
+        } else if (video !== dripVideo) video.pause();
+      });
+    }, { threshold: .35 });
+    [dripVideo, candyVideo].forEach(video => videoWatcher.observe(video));
+  }
+
+  crank.addEventListener('click', () => {
+    if (busy) return;
+    let index = Math.floor(Math.random() * (lastIndex === -1 ? faqItems.length : faqItems.length - 1));
+    if (lastIndex !== -1 && index >= lastIndex) index++;
+    dispense(index);
+  });
+</script>
+
+</body>
 </html>
