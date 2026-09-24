@@ -273,7 +273,9 @@
   .factory-art video {
     width: 100%;
     height: auto;
+    aspect-ratio: 16 / 9;
     display: block;
+    object-fit: contain;
     background: transparent;
   }
   @media (max-width: 820px) { .about-inner { grid-template-columns: 1fr; gap: 30px; } .factory-art { max-width: 480px; margin: 0 auto; } }
@@ -457,7 +459,7 @@
     </div>
 
     <div class="factory-art reveal" aria-hidden="true">
-      <video id="factoryVideo" muted loop playsinline preload="none">
+      <video id="factoryVideo" muted loop playsinline autoplay preload="auto">
         <source src="media/candy-factory.mp4" type="video/mp4">
       </video>
     </div>
@@ -669,6 +671,7 @@
   const factoryVideo = document.getElementById('factoryVideo');
   if (!reducedMotion.matches) {
     heroVideo.play().catch(() => {});
+    factoryVideo.play().catch(() => {});
     new IntersectionObserver(([entry]) => {
       entry.isIntersecting ? heroVideo.play().catch(() => {}) : heroVideo.pause();
     }).observe(heroVideo);
@@ -681,7 +684,7 @@
           } else video.play().catch(() => {});
         } else if (video !== dripVideo) video.pause();
       });
-    }, { threshold: .35 });
+    }, { threshold: 0.15 });
     [dripVideo, candyVideo, factoryVideo].forEach(video => videoWatcher.observe(video));
   }
 
