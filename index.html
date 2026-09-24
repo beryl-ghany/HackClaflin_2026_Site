@@ -269,15 +269,15 @@
   }
   .tracks span:nth-child(3n+2) { background: var(--teal); }
   .tracks span:nth-child(3n) { background: var(--gold); color: var(--ink); }
-  .factory-art { position: relative; }
-  .factory-art svg { width: 100%; height: auto; display: block; }
-  .smoke { animation: smoke 5s ease-in-out infinite; transform-box: fill-box; transform-origin: bottom center; }
-  .smoke.s2 { animation-delay: -2.5s; }
-  @keyframes smoke { 0% { opacity: 0; transform: translateY(10px) scale(.6); } 40% { opacity: .9; } 100% { opacity: 0; transform: translateY(-40px) scale(1.3); } }
-  .window { animation: flicker 4s ease-in-out infinite; }
-  .window:nth-of-type(2n) { animation-delay: -1.3s; }
-  .window:nth-of-type(3n) { animation-delay: -2.6s; }
-  @keyframes flicker { 0%,100% { opacity: 1; } 50% { opacity: .65; } }
+  .factory-art { position: relative; border-radius: 22px; overflow: hidden; }
+  .factory-art video {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #3E0515;
+  }
   @media (max-width: 820px) { .about-inner { grid-template-columns: 1fr; gap: 30px; } .factory-art { max-width: 420px; margin: 0 auto; } }
 
   /* ================= SPONSOR ================= */
@@ -459,30 +459,9 @@
     </div>
 
     <div class="factory-art reveal" aria-hidden="true">
-      <svg viewBox="0 0 400 360">
-        <circle class="smoke" cx="118" cy="40" r="16" fill="#F7C9D8"/>
-        <circle class="smoke s2" cx="128" cy="30" r="12" fill="#FBF1E1"/>
-        <circle class="smoke" cx="292" cy="58" r="14" fill="#FBF1E1"/>
-        <circle class="smoke s2" cx="282" cy="48" r="11" fill="#F7C9D8"/>
-        <rect x="100" y="60" width="36" height="110" rx="4" fill="#5A0A22"/>
-        <rect x="100" y="60" width="36" height="12" fill="#ECC46E"/>
-        <rect x="270" y="80" width="32" height="90" rx="4" fill="#5A0A22"/>
-        <rect x="270" y="80" width="32" height="12" fill="#ECC46E"/>
-        <path d="M40 170 L120 120 L200 170 L280 120 L360 170 L360 330 L40 330 Z" fill="#7A0F2E"/>
-        <path d="M40 170 L120 120 L200 170 L280 120 L360 170" fill="none" stroke="#ECC46E" stroke-width="6" stroke-linejoin="round"/>
-        <rect class="window" x="70" y="195" width="40" height="44" rx="20" fill="#FFD9A0"/>
-        <rect class="window" x="150" y="195" width="40" height="44" rx="20" fill="#FFD9A0"/>
-        <rect class="window" x="210" y="195" width="40" height="44" rx="20" fill="#FFD9A0"/>
-        <rect class="window" x="290" y="195" width="40" height="44" rx="20" fill="#FFD9A0"/>
-        <path d="M170 330 L170 280 A30 30 0 0 1 230 280 L230 330 Z" fill="#3E0515"/>
-        <circle cx="218" cy="305" r="4" fill="#ECC46E"/>
-        <path d="M0 330 Q100 312 200 330 T400 330 L400 360 L0 360 Z" fill="#6B3A1F"/>
-        <path d="M0 340 Q100 324 200 340 T400 340" fill="none" stroke="#8C5230" stroke-width="4"/>
-        <rect x="12" y="280" width="6" height="52" rx="3" fill="#FBF1E1"/>
-        <circle cx="15" cy="272" r="22" fill="#F2729B"/><circle cx="15" cy="272" r="12" fill="none" stroke="#fff" stroke-width="5"/>
-        <rect x="378" y="286" width="6" height="46" rx="3" fill="#FBF1E1"/>
-        <circle cx="381" cy="278" r="18" fill="#2BB3A3"/><circle cx="381" cy="278" r="9" fill="none" stroke="#FFD23F" stroke-width="4"/>
-      </svg>
+      <video id="factoryVideo" muted loop playsinline preload="none">
+        <source src="media/candy-factory.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
@@ -685,10 +664,11 @@
     busy = false;
   }
 
-  // Background videos: hero plays on load, the drip plays once and the candy loops when scrolled into view.
+  // Background videos: hero plays on load; drip plays once; factory + candy loop in view.
   const heroVideo = document.getElementById('heroVideo');
   const dripVideo = document.getElementById('dripVideo');
   const candyVideo = document.getElementById('candyVideo');
+  const factoryVideo = document.getElementById('factoryVideo');
   if (!reducedMotion.matches) {
     heroVideo.play().catch(() => {});
     new IntersectionObserver(([entry]) => {
@@ -704,7 +684,7 @@
         } else if (video !== dripVideo) video.pause();
       });
     }, { threshold: .35 });
-    [dripVideo, candyVideo].forEach(video => videoWatcher.observe(video));
+    [dripVideo, candyVideo, factoryVideo].forEach(video => videoWatcher.observe(video));
   }
 
   crank.addEventListener('click', () => {
