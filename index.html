@@ -269,16 +269,14 @@
   }
   .tracks span:nth-child(3n+2) { background: var(--teal); }
   .tracks span:nth-child(3n) { background: var(--gold); color: var(--ink); }
-  .factory-art { position: relative; border-radius: 22px; overflow: hidden; }
+  .factory-art { position: relative; }
   .factory-art video {
     width: 100%;
     height: auto;
     display: block;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    background: #3E0515;
+    background: transparent;
   }
-  @media (max-width: 820px) { .about-inner { grid-template-columns: 1fr; gap: 30px; } .factory-art { max-width: 420px; margin: 0 auto; } }
+  @media (max-width: 820px) { .about-inner { grid-template-columns: 1fr; gap: 30px; } .factory-art { max-width: 480px; margin: 0 auto; } }
 
   /* ================= SPONSOR ================= */
   .sponsor {
