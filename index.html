@@ -252,8 +252,7 @@
     padding: 20px 20px 90px;
   }
   .about-inner {
-    max-width: 1080px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; align-items: center;
+    max-width: 720px; margin: 0 auto;
   }
   .about h2, .sponsor h2 {
     font-family: "Shrikhand", Georgia, serif; font-weight: 400;
@@ -269,16 +268,6 @@
   }
   .tracks span:nth-child(3n+2) { background: var(--teal); }
   .tracks span:nth-child(3n) { background: var(--gold); color: var(--ink); }
-  .factory-art { position: relative; }
-  .factory-art video {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    display: block;
-    object-fit: contain;
-    background: transparent;
-  }
-  @media (max-width: 820px) { .about-inner { grid-template-columns: 1fr; gap: 30px; } .factory-art { max-width: 480px; margin: 0 auto; } }
 
   /* ================= SPONSOR ================= */
   .sponsor {
@@ -456,12 +445,6 @@
       <div class="tracks" aria-label="Possible project topics">
         <span>Energy + sustainability</span><span>Cybersecurity</span><span>AI</span><span>Community impact</span><span>Infrastructure</span><span>Beginner friendly</span>
       </div>
-    </div>
-
-    <div class="factory-art reveal" aria-hidden="true">
-      <video id="factoryVideo" muted loop playsinline autoplay preload="auto">
-        <source src="media/candy-factory.mp4" type="video/mp4">
-      </video>
     </div>
   </div>
 </section>
@@ -664,14 +647,12 @@
     busy = false;
   }
 
-  // Background videos: hero plays on load; drip plays once; factory + candy loop in view.
+  // Background videos: hero plays on load; drip plays once; candy loops in view.
   const heroVideo = document.getElementById('heroVideo');
   const dripVideo = document.getElementById('dripVideo');
   const candyVideo = document.getElementById('candyVideo');
-  const factoryVideo = document.getElementById('factoryVideo');
   if (!reducedMotion.matches) {
     heroVideo.play().catch(() => {});
-    factoryVideo.play().catch(() => {});
     new IntersectionObserver(([entry]) => {
       entry.isIntersecting ? heroVideo.play().catch(() => {}) : heroVideo.pause();
     }).observe(heroVideo);
@@ -685,7 +666,7 @@
         } else if (video !== dripVideo) video.pause();
       });
     }, { threshold: 0.15 });
-    [dripVideo, candyVideo, factoryVideo].forEach(video => videoWatcher.observe(video));
+    [dripVideo, candyVideo].forEach(video => videoWatcher.observe(video));
   }
 
   crank.addEventListener('click', () => {
